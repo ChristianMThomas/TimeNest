@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault(); // prevents the page from automatically reloading
     console.log('Logging in with:', { email, password }); //For now we just testing code
+    navigate('/org'); // Redirect to organization selection page after login
 
   };
 
@@ -14,15 +17,15 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-500 to-indigo-600">
-      <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-sm">
+      <div className="bg-white mt-5 p-8 rounded-xl shadow-xl w-full max-w-sm">
         <div className="text-center mb-6">
           <h1 className="text-3xl font-bold text-gray-800">
             Welcome to TimeNest
           </h1>
-          <img 
-            src="/src/assets/TimeNest-Login.png"
+          <img
+            src="./assets/TimeNest-Login.png"
             alt="TimeNest Logo"
-            />
+          />
           <p className="text-sm text-gray-500">
             Manage your buisness schedules with ease!
           </p>
