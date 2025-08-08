@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/navbar';
+import M_navbar from '../../components/M_navbar';
 
 const people = [
   { username: 'Alice' },
@@ -12,10 +13,11 @@ const initialMessages = [
   { sender: 'Bob', text: 'Hello Alice!' },
 ];
 
-const EmployeeChat = () => {
+const Chat = () => {
   const [messages, setMessages] = useState(initialMessages);
   const [input, setInput] = useState('');
   const [selected, setSelected] = useState(null);
+  const isManager = localStorage.getItem('isManager') === 'true';
 
   const handleSend = (e) => {
     e.preventDefault();
@@ -27,10 +29,11 @@ const EmployeeChat = () => {
 
   return (
     <>
-      <Navbar />
+    {isManager ? <M_navbar /> : <Navbar />} 
       <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-white flex flex-col items-center pt-20">
+        <h1 className="text-4xl font-bold mb-6 text-indigo-900">Chat</h1>
         <div className="employeeCard mb-8 w-full max-w-lg">
-          <h2 className=" font-bold mb-5 text-center text-3xl text-black">Connect with Coworkers</h2>
+          <h2 className=" font-bold mb-5 text-center text-3xl underline text-black">Connect with your team</h2>
           <div className="flex flex-wrap gap-4 mb-4">
             {people.map((person) => (
               <button
@@ -98,4 +101,4 @@ const EmployeeChat = () => {
   );
 };
 
-export default EmployeeChat;
+export default Chat;

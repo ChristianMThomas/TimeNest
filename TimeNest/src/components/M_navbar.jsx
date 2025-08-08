@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const M_navbar = () => {
   const navigate = useNavigate();
 
   return (
     <nav className="navbar">
       <button
         className="font-semibold px-4 py-2 bg-transparent text-black border-none cursor-pointer"
-        onClick={() => navigate('/employee/home')}
+        onClick={() => navigate('/manager/home')}
       >
         Home
       </button>
@@ -20,7 +20,7 @@ const Navbar = () => {
       </button>
       <button
         className="font-semibold px-4 py-2 bg-transparent text-black border-none cursor-pointer"
-        onClick={() => navigate('/employee/profile')}
+        onClick={() => navigate('/manager/profile')}
       >
         Profile
       </button>
@@ -34,4 +34,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default M_navbar;

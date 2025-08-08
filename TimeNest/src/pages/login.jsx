@@ -6,9 +6,16 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  const generateUsername = (email) => {
+    const namePart = email.split('@')[0].replace(/\d/g, ''); // Remove numeric digits
+    const randomDigits = Math.floor(10000 + Math.random() * 90000); // 5 digits
+    return `${namePart}${randomDigits}`;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault(); // prevents the page from automatically reloading
-    console.log('Logging in with:', { email, password }); //For now we just testing code
+    const username = generateUsername(email);
+    localStorage.setItem('username', username);
     navigate('/org'); // Redirect to organization selection page after login
 
   };
@@ -23,7 +30,7 @@ const Login = () => {
             Welcome to TimeNest
           </h1>
           <img
-            src="./assets/TimeNest-Login.png"
+            src="./assets/time-nest-icon.png"
             alt="TimeNest Logo"
           />
           <p className="text-sm text-gray-500">
